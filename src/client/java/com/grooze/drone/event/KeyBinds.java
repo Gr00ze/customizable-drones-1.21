@@ -31,13 +31,14 @@ public class KeyBinds {
                 "category.drone.controls" // Categoria nelle impostazioni
         ));
 
+        /*
         spaceKeyBinding =  KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.drone.up", // Identificatore del binding
                 InputUtil.Type.KEYSYM, // Tipo di input
                 GLFW.GLFW_KEY_SPACE, // Tasto associato (G in questo caso)
                 "category.drone.controls" // Categoria nelle impostazioni
         ));
-
+        */
     }
 
 
