@@ -6,8 +6,10 @@ import com.grooze.drone.render.DebugHud;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.util.Window;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.glfw.GLFW;
 
 import static com.grooze.drone.event.KeyBinds.*;
 
@@ -68,7 +70,8 @@ public class ClientEvents {
         boolean back = player.input.pressingBack;
         boolean left = player.input.pressingLeft;
         boolean right = player.input.pressingRight;
-        boolean up = spaceKeyBinding.isPressed();
+        long windowHandle = MinecraftClient.getInstance().getWindow().getHandle();
+        boolean up = GLFW.glfwGetKey(windowHandle, GLFW.GLFW_KEY_SPACE) == GLFW.GLFW_PRESS;
         ClientNetwork.sendDroneKeysPacket(vehicle.getId(), forward, back, left, right, up, false);
 
         TestDroneEntity drone = (TestDroneEntity) vehicle;
