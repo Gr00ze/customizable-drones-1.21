@@ -86,8 +86,9 @@ public class TestDroneEntity extends Entity implements Movable{
         }
         else{
             hadPassenger = true;
-
         }
+
+
         if(!this.getWorld().isClient){
             double forward = this.forward ? FORWARD_SPEED : this.back ? - FORWARD_SPEED : 0;
             double sideways = this.left ? 1 : this.right ? -1 : 0;
@@ -98,7 +99,7 @@ public class TestDroneEntity extends Entity implements Movable{
             //TODO Dovrei mandare i pacchetti solo quando una rotazione avviene per alleggerire qualora servisse
             for (PlayerEntity player : this.getWorld().getPlayers()) {
                 ServerPlayNetworking.send((ServerPlayerEntity) player, DroneSyncS2C.droneSyncS2C(this));
-                System.out.println("Mando pacchetto");
+                //System.out.println("Mando pacchetto");
             }
 
 
@@ -108,7 +109,7 @@ public class TestDroneEntity extends Entity implements Movable{
 
             double moveX = -Math.sin(radYaw) * forward;
             double moveZ = Math.cos(radYaw) * forward;
-            double moveY = up ? UP_SPEED : -UP_SPEED;
+            double moveY = up ? UP_SPEED: -UP_SPEED;
             // TEST testing position reset with y = 0
 
             Vec3d droneVelocity = new Vec3d(moveX, moveY, moveZ);
